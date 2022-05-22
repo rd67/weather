@@ -8,11 +8,7 @@ Make sure you have Docker & Docker-Compose installed on the device. [Documentati
 
 **_ .env file inside the server folder is responsible to set auth for redis commandar for security, please make sure that this file is properly updated as per the server environment so that the docker image is made as per the requirements _**
 
-- [Server Setup](https://github.com/rd67/iou/tree/master/readme/Server.md)
-
-**_ .env file inside the client folder is responsible for the client to work properly, please make sure that this file is properly updated as per the environment so that the docker image is made as per the requirements _**
-
-- [Client Setup](https://github.com/rd67/iou/tree/master/readme/Client.md)
+- [Server Setup](https://github.com/rd67/weather/tree/master/readme/Server.md)
 
 Makes builds from scratch for Development (This will rebuild all client and server images)
 

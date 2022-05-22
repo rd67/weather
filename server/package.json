@@ -1,7 +1,7 @@
 {
-  "name": "server-iou",
+  "name": "weather-server",
   "version": "1.0.0",
-  "description": "Intersection over union server",
+  "description": "Weather REST Api, Docker, MakeFile, TypeScript, Sequelize, Redis",
   "private": true,
   "main": "index.js",
   "author": "Rohit Dalal<rohitdalal67@gmail.com>",
@@ -80,7 +80,7 @@
   },
   "repository": {
     "type": "github",
-    "url": "https://github.com/rd67/iou.git"
+    "url": "https://github.com/rd67/weather.git"
   },
   "engines": {
     "node": "=16.8.0"

@@ -16,7 +16,7 @@ When running this application, by default set the development mode. you can set 
 #  Server
 NODE_ENV=development
 SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786 #  Randomly Generated Length 32
-SERVER_NAME=server-iou
+SERVER_NAME=weather-server
 SERVER_URL="http://localhost:8080"
 
 #  Redis
@@ -35,7 +35,7 @@ APP_URL="http://localhost:3000"
 #  Server
 NODE_ENV=production
 SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786 # Randomly Generated Length 32
-SERVER_NAME=server-iou
+SERVER_NAME=weather-server
 SERVER_URL="http://localhost:8081"
 
 #  Redis -> Authentication at SG Level, Redis Port should not be publically accessible
@@ -54,7 +54,7 @@ APP_URL="http://localhost:3000"
 #  Server
 NODE_ENV=test
 SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786 # Randomly Generated Length 32
-SERVER_NAME=server-iou
+SERVER_NAME=weather-server
 SERVER_URL="http://localhost:8082"
 
 #  Redis -> Authentication at SG Level, Redis Post should not be publically accessible
@@ -142,9 +142,9 @@ SERVER_URL="http://localhost:8082"
 
 ### Api Postman
 
-    Link = https://documenter.getpostman.com/view/154248/UyxjGmF4
+    Link = https://documenter.getpostman.com/view/154248/UyxojQ8G
 
-    Make Sure IOU_SERVER Is set in postman is set to ${SERVER_URL} .
+    Make Sure WEATHER_SERVER Is set in postman is set to ${SERVER_URL} .
 
 ```
 

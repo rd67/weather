@@ -71,4 +71,6 @@ export const cityDetails = async (data: interfaces.ICityDetails) => {
 
 export const cityWeather = async (data: interfaces.ICityWeather) => {
   const city = await getCityDetails(data.cityId);
+
+  return city;
 };
