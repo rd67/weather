@@ -1,8 +1,8 @@
-## NodeJS Server
+# 🌿 NodeJS Server
 
 An application built with Express, TypeScript, MySQL, Redis
 
-## Setup
+# 🌿 Setup
 
 - **Required to Setup .env file :**
 
@@ -106,7 +106,7 @@ OPEN_WEATHER_API_KEY=""
 
 - `OPEN_WEATHER_API_KEY` is the Api Key for Open Weather Apis
 
-### Terminal Commands
+# 🌿 Terminal Commands
 
 ### Development: Command starts the server with nodemon (automated server restart on files change)
 
@@ -144,7 +144,7 @@ npm run test
 npm run format
 ```
 
-## Api Documentation
+# 🌿 Api Documentation
 
 SERVER_URL value will be different for each environment for example
 
