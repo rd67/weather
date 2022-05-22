@@ -84,29 +84,29 @@ OPEN_WEATHER_API_KEY=""
 
 - **Description of .env file parameters :**
 
-# Server
+### Server
 
 - `SERVER_URL` is the Server URL, Development: http://localhost:8080, Production: http://localhost:8081, Test: http://localhost:8082
 - `SECRET_KEY` should be randomly generated string of length 32
 
-# Redis
+### Redis
 
 - `REDIS_URL` is the Redis DB URL
 - `REDIS_COMMANDER_USER` is the auth user for redis-commandar GUI tool as per your liking
 - `REDIS_COMMANDER_PASSWORD` is the auth password for redis-commandar GUI tool as per your liking
 
-# MySQL
+### MySQL
 
 - `MYSQL_ROOT_PASSWORD` is the Root password for mySQL
 - `MYSQL_DATABASE` is the database for the project
 - `MYSQL_USER` is the user for the project database
 - `MYSQL_PASSWORD` is the password for the project database
 
-# Open Weather
+### Open Weather
 
 - `OPEN_WEATHER_API_KEY` is the Api Key for Open Weather Apis
 
-#### Terminal Commands
+### Terminal Commands
 
 ## Development: Command starts the server with nodemon (automated server restart on files change)
 
