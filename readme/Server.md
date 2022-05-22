@@ -4,70 +4,85 @@ An application built with Express, TypeScript, Socket
 
 ## Setup
 
-#### Required to Setup .env file
+- **Required to Setup .env file :**
 
 After cloning this repo, make sure you have `duplicated` the `.env.example` file to `.env`, don't let the .env.example file be deleted or renamed.
 
 When running this application, by default set the development mode. you can set the configuration in `.env`, as follows:
 
-## .env file for development
+- **Development :**
 
 ```sh
 #  Server
 NODE_ENV=development
-SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786 #  Randomly Generated Length 32
+SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786
 SERVER_NAME=weather-server
 SERVER_URL="http://localhost:8080"
 
-#  Redis
+#  Redis -> Authentication at SG Level
 REDIS_URL="redis://127.0.0.1:6379"
-
 REDIS_COMMANDER_USER=root
 REDIS_COMMANDER_PASSWORD=password
 
-#  App
-APP_URL="http://localhost:3000"
+#  MySQL
+MYSQL_ROOT_PASSWORD="core2duo"
+MYSQL_DATABASE="weather"
+MYSQL_USER="weatherUser"
+MYSQL_PASSWORD="waetherPassword"
+
+#   Open Weather
+OPEN_WEATHER_API_KEY=""
 ```
 
-## .env file for production
+- **Production :**
 
 ```sh
 #  Server
 NODE_ENV=production
-SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786 # Randomly Generated Length 32
+SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786
 SERVER_NAME=weather-server
 SERVER_URL="http://localhost:8081"
 
-#  Redis -> Authentication at SG Level, Redis Port should not be publically accessible
+#  Redis -> Authentication at SG Level
 REDIS_URL="redis://127.0.0.1:6379"
-
 REDIS_COMMANDER_USER=root
 REDIS_COMMANDER_PASSWORD=password
 
-#  App
-APP_URL="http://localhost:3000"
+#  MySQL
+MYSQL_ROOT_PASSWORD="core2duo"
+MYSQL_DATABASE="weather"
+MYSQL_USER="weatherUser"
+MYSQL_PASSWORD="waetherPassword"
+
+#   Open Weather
+OPEN_WEATHER_API_KEY=""
 ```
 
-## .env file for test
+- **Test :**
 
 ```sh
 #  Server
 NODE_ENV=test
-SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786 # Randomly Generated Length 32
+SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786
 SERVER_NAME=weather-server
 SERVER_URL="http://localhost:8082"
 
-#  Redis -> Authentication at SG Level, Redis Post should not be publically accessible
+#  Redis -> Authentication at SG Level
 REDIS_URL="redis://127.0.0.1:6379"
-
 REDIS_COMMANDER_USER=root
 REDIS_COMMANDER_PASSWORD=password
 
-#  App
-APP_URL="http://localhost:3000"
+#  MySQL
+MYSQL_ROOT_PASSWORD="core2duo"
+MYSQL_DATABASE="weather"
+MYSQL_USER="weatherUser"
+MYSQL_PASSWORD="waetherPassword"
+
+#   Open Weather
+OPEN_WEATHER_API_KEY=""
 ```
 
-#### Description of .env file parameters
+- **Description of .env file parameters :**
 
 # Server
 
@@ -80,9 +95,16 @@ APP_URL="http://localhost:3000"
 `REDIS_COMMANDER_USER` is the auth user for redis-commandar GUI tool as per your liking
 `REDIS_COMMANDER_PASSWORD` is the auth password for redis-commandar GUI tool as per your liking
 
-# App
+# MySQL
 
-`APP_URL` is the Client URL, Development: http://localhost:3000
+`MYSQL_ROOT_PASSWORD` is the Root password for mySQL
+`MYSQL_DATABASE` is the database for the project
+`MYSQL_USER` is the user for the project database
+`MYSQL_PASSWORD` is the password for the project database
+
+# Open Weather
+
+`OPEN_WEATHER_API_KEY` is the Api Key for Open Weather Apis
 
 #### Terminal Commands
 
@@ -145,7 +167,3 @@ SERVER_URL="http://localhost:8082"
     Link = https://documenter.getpostman.com/view/154248/UyxojQ8G
 
     Make Sure WEATHER_SERVER Is set in postman is set to ${SERVER_URL} .
-
-```
-
-```
