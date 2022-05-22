@@ -42,13 +42,14 @@ export const successResponse = (
 };
 
 export const errorResponse = (error: any, req: Request, res: Response) => {
+  const code = error.code;
   const statusCode =
     error.statusCode ?? error.response?.status ?? STATUS_CODES.ERROR;
 
   const logError = error.logError ?? true;
 
   //@ts-ignore
-  const reqId = req["reqId"];
+  const { reqId } = req;
 
   if (statusCode === STATUS_CODES.ERROR) {
     // This clips the constructor invocation from the stack trace.
@@ -58,14 +59,15 @@ export const errorResponse = (error: any, req: Request, res: Response) => {
 
   if (logError) {
     logger.error(
-      `statusCode=>${statusCode}, originalUrl=>${req.originalUrl}, method=>${req.method}, ip=>${req.ip}, reqId=>${reqId}, Stack=>${error.stack}`
+      `statusCode=>${statusCode}, code=>${code}, originalUrl=>${req.originalUrl}, method=>${req.method}, ip=>${req.ip}, reqId=>${reqId}, Stack=>${error.stack}`
     );
   }
 
   if (config.server.isProduction && statusCode === STATUS_CODES.ERROR) {
     //TODO: ******  Production Error need to add notifications
     return res.status(statusCode).json({
-      statusCode,
+      code,
+      // statusCode,
       message: res.__(MESSAGES.serverError),
       data: {},
     });
@@ -79,7 +81,8 @@ export const errorResponse = (error: any, req: Request, res: Response) => {
       : error.toString();
 
   return res.status(statusCode).json({
-    statusCode,
+    code,
+    // statusCode,
     message,
     data: error.data,
   });

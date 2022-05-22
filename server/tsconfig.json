@@ -23,6 +23,7 @@
       "@helpers/*": ["helpers/*"],
       "@interfaces/*": ["interfaces/*"],
       "@middlewares/*": ["middlewares/*"],
+      "@models/*": ["models/*"],
       "@packages/*": ["packages/*"]
     } /* Allow multiple folders to be treated as one when resolving modules. */,
     "typeRoots": ["./src/**/interfaces.ts"]

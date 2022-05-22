@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import helmet from "helmet";
 import hpp from "hpp";
-import chalk from "chalk";
+import { cyan } from "chalk";
 
 import config, { validateConfigEnv } from "@config/config";
 
@@ -16,9 +16,11 @@ import {
   RouteNotFoundHandler,
   ErrorHandler,
 } from "@middlewares/index";
-import { i18n, httpLogger, redis, swagger, mySQL } from "@packages/index";
+import { i18n, httpLogger, redis, swagger, sequelize } from "@packages/index";
 
 import apiV1Routes from "@apiV1/index";
+
+import { bootstrapApp } from "./bootstrap";
 
 const {
   server: { port, environment },
@@ -65,8 +67,8 @@ class App {
 
     const onListening = (): void => {
       console.info(`=================================`);
-      console.info(`======= ENV: ${chalk.cyan(this.env)} =======`);
-      console.info(`🚀 App listening on the port ${chalk.cyan(this.port)}`);
+      console.info(`======= ENV: ${cyan(this.env)} =======`);
+      console.info(`🚀 App listening on the port ${cyan(this.port)}`);
       console.info(`=================================`);
     };
 
@@ -80,8 +82,12 @@ class App {
   }
 
   private connectToDB = async () => {
-    await mySQL.default.sequelize.sync({ force: false });
-    await redis.default.connect();
+    await Promise.all([
+      sequelize.default.sequelize.sync({ force: false }),
+      redis.default.connect(),
+    ]);
+
+    await bootstrapApp();
   };
 
   private initializeMiddlewares() {

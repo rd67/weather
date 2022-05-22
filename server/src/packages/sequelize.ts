@@ -4,6 +4,7 @@ import { red, cyan } from "chalk";
 import config from "@config/config";
 
 import { logger } from "@packages/logger";
+// import models from "@models/";
 
 const { server, mySQL } = config;
 
@@ -36,7 +37,7 @@ sequelize
     logger.info(`${name}: Connected`);
   })
   .catch((error) => {
-    const name = cyan("❌ MySQL");
+    const name = red("❌ MySQL");
     logger.error(`${name} Something went wrong ${error}`);
   });
 
