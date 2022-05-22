@@ -8,4 +8,4 @@ export * as logger from "./logger";
 
 export * as redis from "./redis";
 
-export * as mySQL from "./mySQL";
+export * as sequelize from "./sequelize";
