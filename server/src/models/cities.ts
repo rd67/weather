@@ -4,17 +4,17 @@ import { IPointType } from "@interfaces/common";
 
 import db from "@packages/sequelize";
 
-import { CitiesAttributes } from "@interfaces/cities";
+import { ICitiesAttributes } from "@interfaces/cities";
 
 // Some attributes are optional in the model
 interface CityCreationAttributes
   extends Optional<
-    CitiesAttributes,
+    ICitiesAttributes,
     "id" | "state" | "country" | "createdAt" | "updatedAt"
   > {}
 export class CityInstance
-  extends Model<CitiesAttributes, CityCreationAttributes>
-  implements CitiesAttributes
+  extends Model<ICitiesAttributes, CityCreationAttributes>
+  implements ICitiesAttributes
 {
   public id!: number; // Note that the `null assertion` `!` is required in strict mode.
 

@@ -1,6 +1,6 @@
 import { IPointType } from "./common";
 
-export interface CitiesAttributes {
+export interface ICitiesAttributes {
   id: number;
   name: string;
   state: string;

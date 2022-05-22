@@ -15,15 +15,8 @@ export const successResponse = (
   req: Request,
   res: Response,
   data: any = {},
-  message = MESSAGES.success,
   statusCode = STATUS_CODES.SUCCESS
 ) => {
-  const result = {
-    statusCode,
-    message: res.__(message), //Added Localization to response
-    data,
-  };
-
   //@ts-ignore
   const { originalUrl, method, ip, reqId } = req;
 
@@ -38,7 +31,7 @@ export const successResponse = (
     // result,
   });
 
-  return res.status(statusCode).json(result);
+  return res.status(statusCode).json(data);
 };
 
 export const errorResponse = (error: any, req: Request, res: Response) => {
