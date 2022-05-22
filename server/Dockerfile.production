@@ -1,0 +1,30 @@
+FROM node:16.8.0
+
+LABEL authors="Rohit Dalal<rohitdalal67@gmail.com>"
+
+WORKDIR /app
+
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "nano"]
+
+# Set config npm & install dependencies
+RUN npm install -g typescript ts-node
+
+COPY package*.json ./
+
+# USER node
+# RUN npm ci --only=prod
+
+RUN npm ci
+
+# ## Add the wait script to the image, to wait for db container to actually start
+# ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
+# RUN chmod +x /wait
+
+COPY . .
+
+RUN npm run build
+
+EXPOSE 3335
+
+CMD [ "node", "build/index.js" ]

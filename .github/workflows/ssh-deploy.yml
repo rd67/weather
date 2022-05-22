@@ -1,0 +1,31 @@
+name: SSH Main Build Deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Executing remote ssh commands using git key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.MAIN_HOST }}
+          username: ${{ secrets.MAIN_USERNAME }}
+          key: ${{ secrets.MAIN_KEY }}
+          port: 22
+          script: |
+            cd /var/www/html/
+            git fetch origin
+            git reset --hard origin/main
+            cd server
+            npm ci --only=prod
+            npm run build
+            cd ..
+            cd client
+            npm ci --only=prod
+            npm run build
+            cd ..
+            pm2 reload all
+            sudo systemctl restart nginx
+            echo 'Builds Successfully Deployed'

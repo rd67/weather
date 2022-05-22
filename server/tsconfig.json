@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./build",
+    "rootDir": "./src",
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "noImplicitAny": true,
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    /* Advanced Options */
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    /* Specify the base directory to resolve non-relative module names. */
+    "paths": {
+      "@apiV1/*": ["apiV1/*"],
+      "@config/*": ["config/*"],
+      "@constants/*": ["constants/*"],
+      "@helpers/*": ["helpers/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@packages/*": ["packages/*"]
+    } /* Allow multiple folders to be treated as one when resolving modules. */,
+    "typeRoots": ["./src/**/interfaces.ts"]
+  },
+  "lib": ["es2018"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

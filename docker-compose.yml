@@ -1,0 +1,76 @@
+version: "3.9"
+
+networks:
+  weather-network:
+    driver: bridge
+
+volumes:
+  weather-redis:
+    name: weather-redis
+  weather-mySQL:
+    name: weather-mySQL
+  weather-server:
+    name: weather-server
+
+services:
+
+  redis:
+    hostname: redis
+    image: redis:7.0.0-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - weather-redis:/data
+    networks:
+      - weather-network
+
+  redis-commander:
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    env_file:
+      - ./server/.env
+    environment:
+      REDIS_HOST: redis
+      # REDIS_PASSWORD: ${REDIS_PASSWORD}
+      HTTP_USER: ${REDIS_COMMANDER_USER}
+      HTTP_PASSWORD: ${REDIS_COMMANDER_PASSWORD}
+    depends_on:
+      - redis
+    ports:
+      - "8081:8081"
+    networks:
+      - weather-network
+
+  mySQL:
+    image: mysql:8.0
+    volumes:
+      - weather-mySQL:/var/lib/mysql
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    env_file:
+      - ./server/.env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    networks:
+      - weather-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mySQL
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - "8082:80"
+    networks:
+      - weather-network
