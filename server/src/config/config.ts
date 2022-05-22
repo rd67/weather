@@ -29,6 +29,9 @@ export const validateConfigEnv = () => {
       REDIS_URL: Joi.string().required(),
       REDIS_COMMANDER_USER: Joi.string().required(),
       REDIS_COMMANDER_PASSWORD: Joi.string().required(),
+
+      //  Open Weather
+      OPEN_WEATHER_API_KEY: Joi.string().required(),
     })
     .unknown();
 
@@ -64,6 +67,11 @@ const RedisConfig: interfaces.IRedisConfig = {
   commandarPassword: process.env.REDIS_COMMANDER_PASSWORD as string,
 };
 
+//  Open Weather
+const OpenWeatherConfig: interfaces.IOpenWeatherConfig = {
+  apiKey: process.env.OPEN_WEATHER_API_KEY as string,
+};
+
 const development: interfaces.IConfig = {
   server: {
     isProduction: false,
@@ -77,6 +85,8 @@ const development: interfaces.IConfig = {
   mySQL: MySQLConfig,
 
   redis: RedisConfig,
+
+  openWeather: OpenWeatherConfig,
 
   other: {
     swagger: true,
@@ -97,6 +107,8 @@ const production: interfaces.IConfig = {
 
   redis: RedisConfig,
 
+  openWeather: OpenWeatherConfig,
+
   other: {
     swagger: true,
   },
@@ -115,6 +127,8 @@ const test: interfaces.IConfig = {
   mySQL: MySQLConfig,
 
   redis: RedisConfig,
+
+  openWeather: OpenWeatherConfig,
 
   other: {
     swagger: false,

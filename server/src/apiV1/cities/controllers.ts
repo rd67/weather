@@ -27,3 +27,13 @@ export const cityDetails = AsyncHandler(
     return successResponse(req, res, result);
   }
 );
+
+export const cityWeather = AsyncHandler(
+  async (req: IExpressRequest, res: Response) => {
+    const result = await services.cityWeather({
+      ...(req.params as any),
+    });
+
+    return successResponse(req, res, result);
+  }
+);

@@ -16,3 +16,9 @@ export const cityDetails = {
     cityId: Joi.number().min(1).optional().default(10),
   }),
 };
+
+export const cityWeather = {
+  params: Joi.object().keys({
+    cityId: Joi.number().min(1).optional().default(10),
+  }),
+};

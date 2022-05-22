@@ -13,4 +13,8 @@ router
   .route("/:cityId(\\d+)")
   .get(ValidationHandler(validators.cityDetails), controllers.cityDetails);
 
+router
+  .route("/:cityId(\\d+)/weather")
+  .get(ValidationHandler(validators.cityWeather), controllers.cityWeather);
+
 export default router;

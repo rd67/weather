@@ -32,11 +32,17 @@ export interface IOtherConfig {
   swagger: boolean;
 }
 
+export interface IOpenWeatherConfig {
+  apiKey: string;
+}
+
 export interface IConfig {
   server: IServerConfig;
 
   mySQL: IMySQLConfig;
   redis: IRedisConfig;
+
+  openWeather: IOpenWeatherConfig;
 
   other: IOtherConfig;
 }
