@@ -1,4 +1,4 @@
-# About this Project
+# 🌿 About this Project
 
 - **PROJECT NAME :** weather .
 
@@ -31,7 +31,7 @@
     <img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="Docker" title="Docker" height="40" width="40" />
 </a>
 
-# How it works
+# 🌿 How it works
 
 - **Prerequisites :**
 
@@ -50,7 +50,7 @@
 
   - [Server Details](https://github.com/rd67/weather/tree/master/readme/Server.md)
 
-# Contact
+# 🌿 Contact
 
 - Email: **rohitdalal67@gmail.com**
 - Linkedin : **[Rohit Dalal](https://www.linkedin.com/in/rohitd67/ "Rohit Dalal")**
