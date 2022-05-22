@@ -17,3 +17,13 @@ export const cities = AsyncHandler(
     return successResponse(req, res, result);
   }
 );
+
+export const cityDetails = AsyncHandler(
+  async (req: IExpressRequest, res: Response) => {
+    const result = await services.cityDetails({
+      ...(req.params as any),
+    });
+
+    return successResponse(req, res, result);
+  }
+);

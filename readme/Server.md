@@ -17,7 +17,7 @@ When running this application, by default set the development mode. you can set 
 NODE_ENV=development
 SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786 #  Randomly Generated Length 32
 SERVER_NAME=server-iou
-SERVER_URL="http://localhost:3333"
+SERVER_URL="http://localhost:8080"
 
 #  Redis
 REDIS_URL="redis://127.0.0.1:6379"
@@ -36,7 +36,7 @@ APP_URL="http://localhost:3000"
 NODE_ENV=production
 SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786 # Randomly Generated Length 32
 SERVER_NAME=server-iou
-SERVER_URL="http://localhost:3335"
+SERVER_URL="http://localhost:8081"
 
 #  Redis -> Authentication at SG Level, Redis Port should not be publically accessible
 REDIS_URL="redis://127.0.0.1:6379"
@@ -55,7 +55,7 @@ APP_URL="http://localhost:3000"
 NODE_ENV=test
 SECRET_KEY=bcr123r7y6QGe47123abcdeauqBXF786 # Randomly Generated Length 32
 SERVER_NAME=server-iou
-SERVER_URL="http://localhost:3337"
+SERVER_URL="http://localhost:8082"
 
 #  Redis -> Authentication at SG Level, Redis Post should not be publically accessible
 REDIS_URL="redis://127.0.0.1:6379"
@@ -71,7 +71,7 @@ APP_URL="http://localhost:3000"
 
 # Server
 
-`SERVER_URL` is the Server URL, Development: http://localhost:3333
+`SERVER_URL` is the Server URL, Development: http://localhost:8080
 `SECRET_KEY` should be randomly generated string of length 32
 
 # Redis
@@ -126,11 +126,11 @@ npm run format
 
 SERVER_URL value will be diffrent for each environment for example
 #development
-SERVER_URL="http://localhost:3333"
+SERVER_URL="http://localhost:8080"
 #production
-SERVER_URL="http://localhost:3335"
+SERVER_URL="http://localhost:8081"
 #test
-SERVER_URL="http://localhost:3337"
+SERVER_URL="http://localhost:8082"
 
 ### Api Swagger OpenApi JSON
 

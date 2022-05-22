@@ -85,7 +85,7 @@ services:
   #     - NODE_ENV=production
   #     - REDIS_URL=redis
   #   ports:
-  #     - "3335:3335"
+  #     - "8081:8081"
   #   depends_on:
   #     - redis
   #     - redis-commander

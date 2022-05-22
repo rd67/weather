@@ -9,4 +9,8 @@ const router = express.Router();
 
 router.route("/").get(ValidationHandler(validators.cities), controllers.cities);
 
+router
+  .route("/:cityId(\\d+)")
+  .get(ValidationHandler(validators.cityDetails), controllers.cityDetails);
+
 export default router;
