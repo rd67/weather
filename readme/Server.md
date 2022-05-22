@@ -1,6 +1,6 @@
 ## NodeJS Server
 
-An application built with Express, TypeScript, Socket
+An application built with Express, TypeScript, MySQL, Redis
 
 ## Setup
 
