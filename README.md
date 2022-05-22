@@ -2,7 +2,7 @@
 
 - **PROJECT NAME :** weather .
 
-- **PROJECT GOAL :** Weather App to get Cities Weather. .\*\*
+- **PROJECT GOAL :** Weather App to get Cities Weather.
 
 - **USED TOOLS :**
 
