@@ -108,37 +108,37 @@ OPEN_WEATHER_API_KEY=""
 
 ### Terminal Commands
 
-## Development: Command starts the server with nodemon (automated server restart on files change)
+### Development: Command starts the server with nodemon (automated server restart on files change)
 
 ```sh
 npm run dev
 ```
 
-## Production: Command starts the server from the build
+### Production: Command starts the server from the build
 
 ```sh
 npm run start
 ```
 
-## Production Build : Make build using following command
+### Production Build : Make build using following command
 
 ```sh
 npm run build
 ```
 
-## Clean: Removes the build folder
+### Clean: Removes the build folder
 
 ```sh
 npm run clean
 ```
 
-## Test: Runs the Unit Test
+### Test: Runs the Unit Test
 
 ```sh
 npm run test
 ```
 
-## Format: Formats the code
+### Format: Formats the code
 
 ```sh
 npm run format
