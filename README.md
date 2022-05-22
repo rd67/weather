@@ -44,11 +44,11 @@
 
 - **Docker :**
 
-  - [Details](https://github.com/rd67/weather/tree/master/readme/Docker.md)
+  - [Docker Details](https://github.com/rd67/weather/tree/master/readme/Docker.md)
 
 - **Server :**
 
-  - [Details](https://github.com/rd67/weather/tree/master/readme/Server.md)
+  - [Server Details](https://github.com/rd67/weather/tree/master/readme/Server.md)
 
 # Contact
 
