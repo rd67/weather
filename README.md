@@ -1,8 +1,15 @@
-## 🌿 Documentation
+# About this Project
 
-Weather App to get Cities Weather.
+- **PROJECT NAME :** weather .
 
-## 🌿 Tech Stack
+- **PROJECT GOAL :** Weather App to get Cities Weather. .\*\*
+
+- **USED TOOLS :**
+
+  - Containerization Platform : [Docker](https://www.docker.com/)
+  - automation tool : [Make](https://www.gnu.org/software/make/)
+
+# 🌿 Tech Stack
 
 </br>
 <a href="https://nodejs.org" target="blank">
@@ -14,9 +21,6 @@ Weather App to get Cities Weather.
 <a href="https://expressjs.com" target="blank">
 <img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="Express" title="Express" height="40" width="40" />
 </a>
-<a href="https://reactjs.org/" target="blank">
-    <img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="React" title="React" height="40" width="40" />
-</a>
 <a href="https://www.mysql.com/" target="blank">
     <img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="MySQL" title="MySQL" height="40" width="40" />
 </a>
@@ -27,16 +31,26 @@ Weather App to get Cities Weather.
     <img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="Docker" title="Docker" height="40" width="40" />
 </a>
 
-## 🌿 Getting Started
+# How it works
 
-**_Docker is a requirement to run this application_**
+- **Prerequisites :**
 
-### Requirements plus Details
+  - Linux/ Mac / Windows host machine (I have used a Mac)
+  - Internet Connection
+  - [docker](https://www.docker.com/) installed on Host Machine
+  - [docker-compose](https://docs.docker.com/compose/) installed on Host Machine
 
-1. Docker
+# 🌿 Getting Started
 
-- [Using Docker](https://github.com/rd67/weather/tree/master/readme/Docker.md)
+- **Docker :**
 
-2. Node Server
+  - [Details](https://github.com/rd67/weather/tree/master/readme/Docker.md)
 
-- [Server Setup](https://github.com/rd67/weather/tree/master/readme/Server.md)
+- **Server :**
+
+  - [Details](https://github.com/rd67/weather/tree/master/readme/Server.md)
+
+# Contact
+
+- Email: **rohitdalal67@gmail.com**
+- Linkedin : **[Rohit Dalal](https://www.linkedin.com/in/rohitd67/ "Rohit Dalal")**
