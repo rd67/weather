@@ -80,8 +80,10 @@ class App {
   }
 
   private connectToDB = async () => {
-    await mySQL.default.sequelize.sync({ force: false });
-    await redis.default.connect();
+    await Promise.all([
+      mySQL.default.sequelize.sync({ force: false }),
+      redis.default.connect(),
+    ]);
   };
 
   private initializeMiddlewares() {
