@@ -76,7 +76,7 @@ const bootstrapCities = async (filePath: string) => {
           id: parseInt(`${row.id}`),
           name: formatString(row.name),
           state: row.state,
-          country: row.country,
+          country: row.country.toUpperCase(),
           point: convertToPoint(row.coord.lat, row.coord.lon),
         });
 
@@ -99,7 +99,7 @@ const bootstrapCities = async (filePath: string) => {
       })
       .on("error", reject);
   }).catch((error) => {
-    logger.error(`Cities Bootstrap Error`, error);
+    logger.error(`Cities Bootstrap Error ${error}`);
     throw error;
   });
 };

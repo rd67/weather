@@ -31,29 +31,12 @@ export const convertToPoint = (
 };
 
 export const formatString = (str: string) => {
-  //  Removing trailing, leading `
-  if (str.startsWith("`")) {
-    str = str.slice(1);
-  }
-  if (str.endsWith("`")) {
-    str = str.slice(0, -1);
-  }
+  //  Removing trailing, leading `, ", ', ‘
 
-  //  Removing trailing, leading "
-  if (str.startsWith('"')) {
-    str = str.slice(1);
-  }
-  if (str.endsWith('"')) {
-    str = str.slice(0, -1);
-  }
-
-  //  Removing trailing, leading "
-  if (str.startsWith("'")) {
-    str = str.slice(1);
-  }
-  if (str.endsWith("'")) {
-    str = str.slice(0, -1);
-  }
+  str = str.replace(/(^"|"$)/g, "");
+  str = str.replace(/(^`|`$)/g, "");
+  str = str.replace(/(^'|'$)/g, "");
+  str = str.replace(/(^‘|‘$)/g, "");
 
   return str.trim();
 };

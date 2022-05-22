@@ -27,6 +27,7 @@ export class OperationalError extends Error {
 }
 
 export class ValidationError extends Error {
+  public code = "BadRequestError";
   public statusCode: number = STATUS_CODES.VALIDATION_FAILED;
   public data: any;
   public logError: boolean;
@@ -49,6 +50,7 @@ export class ValidationError extends Error {
 }
 
 export class ActionFailedError extends Error {
+  public code = "BadRequestError";
   public statusCode: number = STATUS_CODES.ACTION_FAILED;
   public data: any;
   public logError: boolean;
@@ -66,6 +68,7 @@ export class ActionFailedError extends Error {
 }
 
 export class NotFoundError extends Error {
+  public code = "NotFoundError";
   public statusCode: number = STATUS_CODES.NOT_FOUND;
   public logError: boolean;
 
