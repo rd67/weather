@@ -10,8 +10,6 @@
 
 **_ .env file inside the server folder is used as env file to set all credentials for the app to run, please make sure that this file is properly updated as per the server environment so that the docker image is made properly _**
 
-[Server Details](https://github.com/rd67/weather/tree/master/readme/Server.md)
-
 - **Project Make Commands available :**
 
 Run the project(Development)
