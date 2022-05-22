@@ -86,7 +86,7 @@ OPEN_WEATHER_API_KEY=""
 
 # Server
 
-- `SERVER_URL` is the Server URL, Development: http://localhost:8080
+- `SERVER_URL` is the Server URL, Development: http://localhost:8080, Production: http://localhost:8081, Test: http://localhost:8082
 - `SECRET_KEY` should be randomly generated string of length 32
 
 # Redis
@@ -146,15 +146,9 @@ npm run format
 
 ## Api Documentation
 
-SERVER_URL value will be diffrent for each environment for example
-#development
-SERVER_URL="http://localhost:8080"
-#production
-SERVER_URL="http://localhost:8081"
-#test
-SERVER_URL="http://localhost:8082"
+SERVER_URL value will be different for each environment for example
 
-### Api Swagger OpenApi JSON
+### Api Swagger OpenApi JSON (Not Available in Test environment)
 
     Link = ${SERVER_URL}/v1/api-docs.json
 
@@ -166,4 +160,4 @@ SERVER_URL="http://localhost:8082"
 
     Link = https://documenter.getpostman.com/view/154248/UyxojQ8G
 
-    Make Sure WEATHER_SERVER Is set in postman is set to ${SERVER_URL} .
+    Make Sure WEATHER_SERVER Is set in postman is set to ${SERVER_URL} value from .env file .
