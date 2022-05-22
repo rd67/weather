@@ -1,15 +1,14 @@
 export default {
   CitiesResponse: {
-    type: "object",
-    cities: {
-      data: {
-        type: "object",
-        properties: {
-          result: {
-            type: "integer",
-            min: 0,
-            max: 1,
-          },
+    type: "array",
+    items: {
+      type: "object",
+      properties: {
+        id: {
+          type: "integer",
+        },
+        name: {
+          type: "string",
         },
       },
     },
@@ -36,22 +35,43 @@ export default {
       },
     },
   },
-  CityWatherResponse: {
+  CityWeatherResponse: {
     type: "object",
     cities: {
       data: {
         type: "object",
         properties: {
-          id: {
-            type: "integer",
-          },
-          name: {
+          type: {
             type: "string",
           },
-          lat: {
+          type_description: {
+            type: "string",
+          },
+          sunrise: {
+            type: "string",
+          },
+          sunset: {
+            type: "string",
+          },
+          temp: {
             type: "integer",
           },
-          lng: {
+          temp_min: {
+            type: "integer",
+          },
+          temp_max: {
+            type: "integer",
+          },
+          pressure: {
+            type: "integer",
+          },
+          humidity: {
+            type: "integer",
+          },
+          clouds_percent: {
+            type: "integer",
+          },
+          wind_speed: {
             type: "integer",
           },
         },

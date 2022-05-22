@@ -114,8 +114,9 @@ export default {
       responses: {
         200: {
           description: "Success.",
+          // type: "object",
           // schema: {
-          //   $ref: "#/components/schemas/CityWatherResponse",
+          //   $ref: "#/components/schemas/CityWeatherResponse",
           // },
         },
         404: {
