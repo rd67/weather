@@ -21,6 +21,7 @@ export const validateConfigEnv = () => {
 
       //  MySQL
       MYSQL_ROOT_PASSWORD: Joi.string().required(),
+      MYSQL_HOST: Joi.string().required(),
 
       //  Redis
       REDIS_URL: Joi.string().required(),

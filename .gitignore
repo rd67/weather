@@ -1,9 +1,8 @@
 .idea
 .DS_Store
 
-.env
+# .env
 
 **/build
-docs
 **/node_modules
 **/logs
