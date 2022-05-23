@@ -1,6 +1,7 @@
 import { cyan } from "chalk";
 import { createReadStream } from "fs";
 import { join } from "path";
+//@ts-ignore
 import { parse as jsonParse } from "JSONStream";
 
 import { ICityFileRow, ICityCreateRow } from "@interfaces/cities";

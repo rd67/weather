@@ -1,7 +1,9 @@
 name: SSH Main Build Deploy
+
 on:
   push:
     branches: [main]
+
 jobs:
   build:
     name: Build
@@ -21,11 +23,5 @@ jobs:
       #       cd server
       #       npm ci --only=prod
       #       npm run build
-      #       cd ..
-      #       cd client
-      #       npm ci --only=prod
-      #       npm run build
-      #       cd ..
       #       pm2 reload all
-      #       sudo systemctl restart nginx
       #       echo 'Builds Successfully Deployed'

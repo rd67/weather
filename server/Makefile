@@ -1,11 +1,11 @@
 build_back_dev:
-	docker build -t backend:dev --no-cache -f ./Dockerfile .
+	docker build -t weather-server:dev --no-cache -f ./Dockerfile .
 
 runback_dev:
-	docker run -d --name back_dev_container -p 8080:8080 backend:dev
+	docker run -d --name weather-server-dev --env-file ./.env -p 8080:8080 weather-server:dev
 
 build_back_prod:
-	docker build -t backend:prod --no-cache -f ./Dockerfile.production .
+	docker build -t weather-server:prod --no-cache -f ./Dockerfile.production .
 
 runback_prod:
-	docker run -d --name back_prod_container -p 8081:8081 backend:prod
+	docker run -d --name weather-server-prod --env-file ./.env -p 8081:8081 weather-server:prod
