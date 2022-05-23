@@ -29,6 +29,8 @@ services:
     hostname: redis-commander
     image: rediscommander/redis-commander:latest
     restart: always
+    links:
+      - redis
     env_file:
       - ./server/.env
     environment:
@@ -75,22 +77,27 @@ services:
       - "8086:80"
     networks:
       - weather-network
-  # server:
-  #   container_name: server
-  #   build:
-  #     context: ./server
-  #     dockerfile: Dockerfile.production
-  #   env_file:
-  #     - ./server/.env
-  #   environment:
-  #     - NODE_ENV=production
-  #     - REDIS_URL=redis
-  #   ports:
-  #     - "8081:8081"
-  #   depends_on:
-  #     - redis
-  #     - redis-commander
-  #   volumes:
-  #     - weather-server:/app
-  #   networks:
-  #     - weather-network
+
+  server:
+    container_name: weather-server
+    build:
+      context: ./server
+      dockerfile: Dockerfile.production
+    links:
+      - mySQL
+      - redis
+    env_file:
+      - ./server/.env
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+      - redis-commander
+      - mySQL
+      - phpmyadmin
+    volumes:
+      - weather-server:/app
+    networks:
+      - weather-network

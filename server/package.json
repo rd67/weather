@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Weather REST Api, Docker, MakeFile, TypeScript, Sequelize, Redis",
   "private": true,
-  "main": "index.js",
+  "main": "build/index",
   "author": "Rohit Dalal<rohitdalal67@gmail.com>",
   "contributors": [
     {

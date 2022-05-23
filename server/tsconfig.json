@@ -26,9 +26,10 @@
       "@models/*": ["models/*"],
       "@packages/*": ["packages/*"]
     } /* Allow multiple folders to be treated as one when resolving modules. */,
-    "typeRoots": ["./src/**/interfaces.ts"]
+    "typeRoots": ["./src/**/interfaces.ts"],
+    "resolveJsonModule": true
   },
-  "lib": ["es2018"],
-  "include": ["src/**/*"],
+  "lib": ["es2020"],
+  "include": ["src/**/*", "./src/city.list.json"],
   "exclude": ["node_modules"]
 }
