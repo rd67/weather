@@ -9,8 +9,6 @@ volumes:
     name: weather-redis
   weather-mySQL:
     name: weather-mySQL
-  weather-server:
-    name: weather-server
 
 services:
 
@@ -39,7 +37,7 @@ services:
     depends_on:
       - redis
     ports:
-      - "8081:8081"
+      - "8085:8081"
     networks:
       - weather-network
 
@@ -52,10 +50,11 @@ services:
       - ./server/.env
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      # MYSQL_DATABASE: ${MYSQL_DATABASE}
+      # MYSQL_USER: ${MYSQL_USER}
+      # MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      # MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    entrypoint: sh -c " echo 'CREATE DATABASE IF NOT EXISTS weatherDev; CREATE DATABASE IF NOT EXISTS weatherProd; CREATE DATABASE IF NOT EXISTS weatherTest;' > /docker-entrypoint-initdb.d/init.sql; /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci "
     ports:
       - "3306:3306"
     networks:
@@ -71,6 +70,6 @@ services:
       PMA_ARBITRARY: 1
     restart: always
     ports:
-      - "8082:80"
+      - "8086:80"
     networks:
       - weather-network

@@ -4,12 +4,12 @@ import { STATUS_CODES, MESSAGES } from "@constants/constants";
 export class OperationalError extends Error {
   public statusCode: number;
   public data: any;
-  public logError: boolean;
+  public log: boolean;
 
   constructor(
     message: string = MESSAGES.serverError,
     statusCode: number = STATUS_CODES.ACTION_FAILED,
-    logError: boolean = true,
+    log: boolean = true,
     data: any = {}
   ) {
     super(message);
@@ -22,7 +22,7 @@ export class OperationalError extends Error {
     this.name = ""; // Used to cause messages like "UserError: message" instead of the default "Error: message"
     this.data = data;
     this.statusCode = statusCode;
-    this.logError = logError;
+    this.log = log;
   }
 }
 
@@ -30,12 +30,12 @@ export class ValidationError extends Error {
   public code = "BadRequestError";
   public statusCode: number = STATUS_CODES.VALIDATION_FAILED;
   public data: any;
-  public logError: boolean;
+  public log: boolean;
 
   constructor(
     data: any,
     message: string = MESSAGES.validationFailed,
-    logError: boolean = true
+    log: boolean = true
   ) {
     super(message);
 
@@ -45,7 +45,7 @@ export class ValidationError extends Error {
     this.name = this.constructor.name;
     this.message = message;
     this.data = data;
-    this.logError = logError;
+    this.log = log;
   }
 }
 
@@ -53,9 +53,9 @@ export class ActionFailedError extends Error {
   public code = "BadRequestError";
   public statusCode: number = STATUS_CODES.ACTION_FAILED;
   public data: any;
-  public logError: boolean;
+  public log: boolean;
 
-  constructor(message: string, data: any = {}, logError: boolean = true) {
+  constructor(message: string, data: any = {}, log: boolean = true) {
     super(message);
 
     //  This is a fix for incorrect instanceOf
@@ -63,22 +63,22 @@ export class ActionFailedError extends Error {
 
     this.name = this.constructor.name;
     this.data = data;
-    this.logError = logError;
+    this.log = log;
   }
 }
 
 export class NotFoundError extends Error {
   public code = "NotFoundError";
   public statusCode: number = STATUS_CODES.NOT_FOUND;
-  public logError: boolean;
+  public log: boolean;
 
-  constructor(message: string, logError: boolean = false) {
+  constructor(message: string, log: boolean = true) {
     super(message);
 
     //  This is a fix for incorrect instanceOf
     Object.setPrototypeOf(this, NotFoundError.prototype);
 
     this.name = this.constructor.name;
-    this.logError = logError;
+    this.log = log;
   }
 }

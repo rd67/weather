@@ -1,45 +1,64 @@
-## Docker
+# 🌿 Docker
 
-## Setup
+- **Prerequisites :**
 
-Make sure you have Docker & Docker-Compose installed on the device. [Documentation Docker](https://docs.docker.com/engine/install/).
+  - Internet Connection
+  - [docker](https://www.docker.com/) installed on Host Machine
+  - [docker-compose](https://docs.docker.com/compose/) installed on Host Machine
 
 #### Terminal Commands
 
-**_ .env file inside the server folder is responsible to set auth for redis commandar for security, please make sure that this file is properly updated as per the server environment so that the docker image is made as per the requirements _**
+**_ .env file inside the server folder is used as env file to set all credentials for the app to run, please make sure that this file is properly updated as per the server environment so that the docker image is made properly _**
 
-- [Server Setup](https://github.com/rd67/iou/tree/master/readme/Server.md)
+- **Project Make Commands available :**
 
-**_ .env file inside the client folder is responsible for the client to work properly, please make sure that this file is properly updated as per the environment so that the docker image is made as per the requirements _**
-
-- [Client Setup](https://github.com/rd67/iou/tree/master/readme/Client.md)
-
-Makes builds from scratch for Development (This will rebuild all client and server images)
+Run the project(Development)
 
 ```sh
-docker-compose --env-file ./server/.env build --no-cache
+make compose_run_dev
 ```
 
-Starts up Development environment
+Stops the project(Development)
 
 ```sh
-docker-compose --env-file ./server/.env -f ./docker-compose.yml up -d --force-recreate
+make compose_stop_dev
 ```
 
-Makes builds from scratch for Production (This will rebuild all client and server images)
+Run the project(Production)
 
 ```sh
-docker-compose --env-file ./server/.env -f ./docker-compose.production.yml build --no-cache
+make compose_run_prod
 ```
 
-Starts up Production environment
+Stops the project(Production)
 
 ```sh
-docker-compose --env-file ./server/.env -f ./docker-compose.production.yml up -d --force-recreate
+make compose_stop_prod
 ```
 
-Removes each services
+- **Backend Make Commands available(Needs to be inside server folder in terminal) :**
+  [Server Details](https://github.com/rd67/weather/tree/master/readme/Server.md)
+
+Makes builds from scratch for the Backend(Development)
 
 ```sh
-docker-compose down
+make build_back_dev
+```
+
+Starts up Backend(Development) image
+
+```sh
+make runback_dev
+```
+
+Makes builds from scratch for the Backend(Production)
+
+```sh
+make build_back_prod
+```
+
+Starts up Backend(Production)
+
+```sh
+make runback_prod
 ```

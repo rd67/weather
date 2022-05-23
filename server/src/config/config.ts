@@ -21,14 +21,14 @@ export const validateConfigEnv = () => {
 
       //  MySQL
       MYSQL_ROOT_PASSWORD: Joi.string().required(),
-      MYSQL_DATABASE: Joi.string().required(),
-      MYSQL_USER: Joi.string().required(),
-      MYSQL_PASSWORD: Joi.string().required(),
 
       //  Redis
       REDIS_URL: Joi.string().required(),
       REDIS_COMMANDER_USER: Joi.string().required(),
       REDIS_COMMANDER_PASSWORD: Joi.string().required(),
+
+      //  Open Weather
+      OPEN_WEATHER_API_KEY: Joi.string().required(),
     })
     .unknown();
 
@@ -47,21 +47,16 @@ const SecretKey = process.env.SECRET_KEY as string;
 const ServerName = process.env.SERVER_NAME as string;
 const ServerURL = process.env.SERVER_URL as string;
 
-//  MySQL
-const MySQLConfig: interfaces.IMySQLConfig = {
-  rootPassword: process.env.MYSQL_ROOT_PASSWORD as string,
-  host: process.env.MYSQL_HOST as string,
-  port: 3306,
-  database: process.env.MYSQL_DATABASE as string,
-  user: process.env.MYSQL_USER as string,
-  password: process.env.MYSQL_PASSWORD as string,
-};
-
-//  Redis
+//  Redis   TODO:Different Server for Each ENV
 const RedisConfig: interfaces.IRedisConfig = {
   url: process.env.REDIS_URL as string,
   commandarUser: process.env.REDIS_COMMANDER_USER as string,
   commandarPassword: process.env.REDIS_COMMANDER_PASSWORD as string,
+};
+
+//  Open Weather
+const OpenWeatherConfig: interfaces.IOpenWeatherConfig = {
+  apiKey: process.env.OPEN_WEATHER_API_KEY as string,
 };
 
 const development: interfaces.IConfig = {
@@ -69,14 +64,22 @@ const development: interfaces.IConfig = {
     isProduction: false,
     environment: interfaces.IEnvironment.development,
     name: ServerName,
-    port: 3333,
+    port: 8080,
     secretKey: SecretKey,
     url: ServerURL,
   },
 
-  mySQL: MySQLConfig,
+  mySQL: {
+    host: process.env.MYSQL_HOST as string,
+    port: 3306,
+    database: "weatherDev",
+    user: "root",
+    password: process.env.MYSQL_ROOT_PASSWORD as string,
+  },
 
   redis: RedisConfig,
+
+  openWeather: OpenWeatherConfig,
 
   other: {
     swagger: true,
@@ -88,14 +91,22 @@ const production: interfaces.IConfig = {
     isProduction: true,
     environment: interfaces.IEnvironment.production,
     name: ServerName,
-    port: 3335,
+    port: 8081,
     secretKey: SecretKey,
     url: ServerURL,
   },
 
-  mySQL: MySQLConfig,
+  mySQL: {
+    host: process.env.MYSQL_HOST as string,
+    port: 3306,
+    database: "weatherProd",
+    user: "root",
+    password: process.env.MYSQL_ROOT_PASSWORD as string,
+  },
 
   redis: RedisConfig,
+
+  openWeather: OpenWeatherConfig,
 
   other: {
     swagger: true,
@@ -107,14 +118,22 @@ const test: interfaces.IConfig = {
     isProduction: true,
     environment: interfaces.IEnvironment.test,
     name: ServerName,
-    port: 3337,
+    port: 8082,
     secretKey: SecretKey,
     url: ServerURL,
   },
 
-  mySQL: MySQLConfig,
+  mySQL: {
+    host: process.env.MYSQL_HOST as string,
+    port: 3306,
+    database: "weatherTest",
+    user: "root",
+    password: process.env.MYSQL_ROOT_PASSWORD as string,
+  },
 
   redis: RedisConfig,
+
+  openWeather: OpenWeatherConfig,
 
   other: {
     swagger: false,
