@@ -72,7 +72,3 @@ export const logger = winston.createLogger({
 export const logInfo = (data: any) => {
   logger.info(JSON.stringify(data, null, 2));
 };
-
-export const logError = (data: any) => {
-  logger.info(JSON.stringify(data, null, 2));
-};

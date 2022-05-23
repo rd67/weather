@@ -31,7 +31,6 @@ export interface ICityWeatherDetailsRes {
 }
 
 export interface ICityWeatherParams {
-  reqId: string;
   cityId: number;
 }
 

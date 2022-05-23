@@ -32,7 +32,6 @@ export const cityWeather = AsyncHandler(
   async (req: IExpressRequest, res: Response) => {
     const result = await services.cityWeather({
       ...(req.params as any),
-      reqId: req.reqId,
     });
 
     return successResponse(req, res, result);

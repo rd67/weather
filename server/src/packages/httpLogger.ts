@@ -4,7 +4,8 @@ import morganJSON from "morgan-json";
 
 import { STATUS_CODES } from "@constants/constants";
 import { IExpressRequest } from "@interfaces/common";
-import { logInfo, logError } from "@packages/logger";
+
+import { logger, logInfo } from "./logger";
 
 type HTTPLoggerParams = Record<string, string>;
 
@@ -12,8 +13,8 @@ class HTTPLoggerStream {
   write(message: string) {
     const data: HTTPLoggerParams = JSON.parse(message);
 
-    if (Number(data.status) > STATUS_CODES.SUCCESS) {
-      logError({
+    if (Number(data.status) > STATUS_CODES.CREATED) {
+      logger.error({
         // timestamp: new Date().toString(),
         ...data,
       });

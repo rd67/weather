@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import config from "@config/config";
+
 import { STATUS_CODES, MESSAGES } from "@constants/constants";
 
 import {
@@ -9,7 +10,7 @@ import {
   ValidationError,
 } from "@helpers/errors";
 
-import { logger, logInfo } from "@packages/logger";
+import { logger } from "@packages/logger";
 
 export const successResponse = (
   req: Request,
@@ -17,20 +18,6 @@ export const successResponse = (
   data: any = {},
   statusCode = STATUS_CODES.SUCCESS
 ) => {
-  //@ts-ignore
-  const { originalUrl, method, ip, reqId } = req;
-
-  logInfo({
-    reqId,
-    req: {
-      originalUrl,
-      method,
-      ip,
-      statusCode,
-    },
-    // result,
-  });
-
   return res.status(statusCode).json(data);
 };
 
@@ -39,7 +26,7 @@ export const errorResponse = (error: any, req: Request, res: Response) => {
   const statusCode =
     error.statusCode ?? error.response?.status ?? STATUS_CODES.ERROR;
 
-  const logError = error.logError ?? true;
+  const log = error.log ?? true;
 
   //@ts-ignore
   const { reqId } = req;
@@ -50,7 +37,7 @@ export const errorResponse = (error: any, req: Request, res: Response) => {
     Error.captureStackTrace(error, error.constructor);
   }
 
-  if (logError) {
+  if (log) {
     logger.error(
       `statusCode=>${statusCode}, code=>${code}, originalUrl=>${req.originalUrl}, method=>${req.method}, ip=>${req.ip}, reqId=>${reqId}, Stack=>${error.stack}, error=${error}`
     );
