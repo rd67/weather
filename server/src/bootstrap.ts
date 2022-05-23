@@ -3,32 +3,13 @@ import { createReadStream } from "fs";
 import { join } from "path";
 import { parse as jsonParse } from "JSONStream";
 
-import { IPointType } from "@interfaces/common";
+import { ICityFileRow, ICityCreateRow } from "@interfaces/cities";
 
 import { convertToPoint, formatString } from "@helpers/common";
 
 import { logger, logInfo } from "@packages/logger";
 
 import models from "@models/index";
-
-interface ICityFileRow {
-  id: number;
-  name: string;
-  state: string;
-  country: string;
-  coord: {
-    lon: number;
-    lat: number;
-  };
-}
-
-interface ICityCreateRow {
-  id: number;
-  name: string;
-  state: string;
-  country: string;
-  point: IPointType;
-}
 
 /**
  *

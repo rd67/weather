@@ -40,7 +40,7 @@ const getCityDetails = async (
   return city;
 };
 
-export const cities = async (data: interfaces.ICities) => {
+export const cities = async (data: interfaces.ICitiesParams) => {
   return models.City.findAll({
     attributes: [
       "id",
@@ -65,11 +65,11 @@ export const cities = async (data: interfaces.ICities) => {
   });
 };
 
-export const cityDetails = async (data: interfaces.ICityDetails) => {
+export const cityDetails = async (data: interfaces.ICityDetailsParams) => {
   return getCityDetails(data.cityId);
 };
 
-export const cityWeather = async (data: interfaces.ICityWeather) => {
+export const cityWeather = async (data: interfaces.ICityWeatherParams) => {
   const city = await getCityDetails(data.cityId);
 
   return city;

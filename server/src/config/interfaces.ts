@@ -14,7 +14,7 @@ interface IServerConfig {
 }
 
 export interface IMySQLConfig {
-  rootPassword: string;
+  // rootPassword: string;
   host: string;
   port: number;
   database: string;

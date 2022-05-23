@@ -5,16 +5,16 @@ export interface ICityDetailsRes {
   lng: number;
 }
 
-export interface ICities {
+export interface ICitiesParams {
   lat: number;
   lng: number;
   dist: number;
 }
 
-export interface ICityDetails {
+export interface ICityDetailsParams {
   cityId: number;
 }
 
-export interface ICityWeather {
+export interface ICityWeatherParams {
   cityId: number;
 }

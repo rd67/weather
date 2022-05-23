@@ -32,12 +32,6 @@ describe("V1 Common", () => {
 
           expect(body).be.a("object");
 
-          expect(body)
-            .to.have.property("statusCode")
-            .be.eql(STATUS_CODES.SUCCESS);
-          expect(body).to.have.property("message").be.eql(MESSAGES.success);
-          expect(body).to.have.property("data").be.a("object");
-
           done();
         });
     });

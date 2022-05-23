@@ -21,9 +21,9 @@ export const validateConfigEnv = () => {
 
       //  MySQL
       MYSQL_ROOT_PASSWORD: Joi.string().required(),
-      MYSQL_DATABASE: Joi.string().required(),
-      MYSQL_USER: Joi.string().required(),
-      MYSQL_PASSWORD: Joi.string().required(),
+      // MYSQL_DATABASE: Joi.string().required(),
+      // MYSQL_USER: Joi.string().required(),
+      // MYSQL_PASSWORD: Joi.string().required(),
 
       //  Redis
       REDIS_URL: Joi.string().required(),
@@ -50,15 +50,14 @@ const SecretKey = process.env.SECRET_KEY as string;
 const ServerName = process.env.SERVER_NAME as string;
 const ServerURL = process.env.SERVER_URL as string;
 
-//  MySQL
-const MySQLConfig: interfaces.IMySQLConfig = {
-  rootPassword: process.env.MYSQL_ROOT_PASSWORD as string,
-  host: process.env.MYSQL_HOST as string,
-  port: 3306,
-  database: process.env.MYSQL_DATABASE as string,
-  user: process.env.MYSQL_USER as string,
-  password: process.env.MYSQL_PASSWORD as string,
-};
+// //  MySQL
+// const MySQLConfig: interfaces.IMySQLConfig = {
+//   host: process.env.MYSQL_HOST as string,
+//   port: 3306,
+//   database: 'weather',// process.env.MYSQL_DATABASE as string,
+//   user: 'root',// process.env.MYSQL_USER as string,
+//   password:  process.env.MYSQL_ROOT_PASSWORD as string//process.env.MYSQL_PASSWORD as string,
+// };
 
 //  Redis
 const RedisConfig: interfaces.IRedisConfig = {
@@ -82,7 +81,13 @@ const development: interfaces.IConfig = {
     url: ServerURL,
   },
 
-  mySQL: MySQLConfig,
+  mySQL: {
+    host: process.env.MYSQL_HOST as string,
+    port: 3306,
+    database: "weatherDev",
+    user: "root",
+    password: process.env.MYSQL_ROOT_PASSWORD as string,
+  },
 
   redis: RedisConfig,
 
@@ -103,7 +108,13 @@ const production: interfaces.IConfig = {
     url: ServerURL,
   },
 
-  mySQL: MySQLConfig,
+  mySQL: {
+    host: process.env.MYSQL_HOST as string,
+    port: 3306,
+    database: "weatherProd",
+    user: "root",
+    password: process.env.MYSQL_ROOT_PASSWORD as string,
+  },
 
   redis: RedisConfig,
 
@@ -124,7 +135,13 @@ const test: interfaces.IConfig = {
     url: ServerURL,
   },
 
-  mySQL: MySQLConfig,
+  mySQL: {
+    host: process.env.MYSQL_HOST as string,
+    port: 3306,
+    database: "weatherTest",
+    user: "root",
+    password: process.env.MYSQL_ROOT_PASSWORD as string,
+  },
 
   redis: RedisConfig,
 
