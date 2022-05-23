@@ -47,7 +47,7 @@ const SecretKey = process.env.SECRET_KEY as string;
 const ServerName = process.env.SERVER_NAME as string;
 const ServerURL = process.env.SERVER_URL as string;
 
-//  Redis
+//  Redis   TODO:Different Server for Each ENV
 const RedisConfig: interfaces.IRedisConfig = {
   url: process.env.REDIS_URL as string,
   commandarUser: process.env.REDIS_COMMANDER_USER as string,

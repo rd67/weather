@@ -149,3 +149,17 @@ SERVER_URL value will be different for each environment for example
     Link = https://documenter.getpostman.com/view/154248/UyxojQ8G
 
     Make Sure WEATHER_SERVER Is set in postman is set to ${SERVER_URL} value from .env file .
+
+# 🌿 Server GUI Links to access DBs
+
+### Redis - Redis-Commandar Link
+
+- `LINK` -> http://localhost:8085
+- `USER` -> `REDIS_COMMANDER_USER` from server/.env file
+- `PASSWORD` -> `REDIS_COMMANDER_PASSWORD` from server/.env file
+
+### Mysql - PhpMyAdmin Link
+
+- `LINK` -> http://localhost:8086
+- `USER` -> root
+- `PASSWORD` -> `MYSQL_ROOT_PASSWORD` from server/.env file
