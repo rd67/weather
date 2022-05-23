@@ -52,7 +52,7 @@ export const errorResponse = (error: any, req: Request, res: Response) => {
 
   if (logError) {
     logger.error(
-      `statusCode=>${statusCode}, code=>${code}, originalUrl=>${req.originalUrl}, method=>${req.method}, ip=>${req.ip}, reqId=>${reqId}, Stack=>${error.stack}`
+      `statusCode=>${statusCode}, code=>${code}, originalUrl=>${req.originalUrl}, method=>${req.method}, ip=>${req.ip}, reqId=>${reqId}, Stack=>${error.stack}, error=${error}`
     );
   }
 
