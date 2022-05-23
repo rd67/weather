@@ -16,9 +16,11 @@ import {
   RouteNotFoundHandler,
   ErrorHandler,
 } from "@middlewares/index";
-import { i18n, httpLogger, redis, swagger, sequelize } from "@packages/index";
+
+import { i18n, httpLogger, redis, swagger } from "@packages/index";
 
 import apiV1Routes from "@apiV1/index";
+import { sequelize } from "@models/index";
 
 import { bootstrapApp } from "./bootstrap";
 
@@ -36,54 +38,15 @@ class App {
     this.port = port;
     this.env = environment;
 
-    this.connectToDB();
+    this.initialize();
+  }
+
+  private initialize = async () => {
     this.initializeMiddlewares();
     this.initializeRoutes();
-  }
 
-  public listen() {
-    const onError = (error: { syscall: string; code: string }): void => {
-      if (error.syscall !== "listen") {
-        throw error;
-      }
-
-      const bind =
-        typeof this.port === "string"
-          ? `Pipe ${this.port}`
-          : `Port ${this.port}`;
-
-      // handle specific listen errors with friendly messages
-      switch (error.code) {
-        case "EACCES":
-          console.error(`${bind} requires elevated privileges`);
-          process.exit(1);
-        case "EADDRINUSE":
-          console.error(`${bind} is already in use`);
-          process.exit(1);
-        default:
-          throw error;
-      }
-    };
-
-    const onListening = (): void => {
-      console.info(`=================================`);
-      console.info(`======= ENV: ${cyan(this.env)} =======`);
-      console.info(`🚀 App listening on the port ${cyan(this.port)}`);
-      console.info(`=================================`);
-    };
-
-    // Run listener
-    const server = this.app
-      .listen(this.port)
-      .on("error", onError)
-      .on("listening", onListening);
-
-    return server;
-  }
-
-  private connectToDB = async () => {
     await Promise.all([
-      sequelize.default.sequelize.sync({ force: false }),
+      sequelize.sync({ force: false }),
       redis.default.connect(),
     ]);
 
@@ -126,6 +89,46 @@ class App {
 
     // Catch errors
     this.app.use(ErrorHandler);
+  }
+
+  public listen() {
+    const onError = (error: { syscall: string; code: string }): void => {
+      if (error.syscall !== "listen") {
+        throw error;
+      }
+
+      const bind =
+        typeof this.port === "string"
+          ? `Pipe ${this.port}`
+          : `Port ${this.port}`;
+
+      // handle specific listen errors with friendly messages
+      switch (error.code) {
+        case "EACCES":
+          console.error(`${bind} requires elevated privileges`);
+          process.exit(1);
+        case "EADDRINUSE":
+          console.error(`${bind} is already in use`);
+          process.exit(1);
+        default:
+          throw error;
+      }
+    };
+
+    const onListening = (): void => {
+      console.info(`=================================`);
+      console.info(`======= ENV: ${cyan(this.env)} =======`);
+      console.info(`🚀 App listening on the port ${cyan(this.port)}`);
+      console.info(`=================================`);
+    };
+
+    // Run listener
+    const server = this.app
+      .listen(this.port)
+      .on("error", onError)
+      .on("listening", onListening);
+
+    return server;
   }
 }
 

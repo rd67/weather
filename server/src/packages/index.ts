@@ -7,5 +7,3 @@ export * as httpLogger from "./httpLogger";
 export * as logger from "./logger";
 
 export * as redis from "./redis";
-
-export * as sequelize from "./sequelize";

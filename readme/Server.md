@@ -26,9 +26,6 @@ REDIS_COMMANDER_PASSWORD=password
 
 #  MySQL
 MYSQL_ROOT_PASSWORD="core2duo"
-MYSQL_DATABASE="weather"
-MYSQL_USER="weatherUser"
-MYSQL_PASSWORD="waetherPassword"
 
 #   Open Weather
 OPEN_WEATHER_API_KEY=""
@@ -50,9 +47,6 @@ REDIS_COMMANDER_PASSWORD=password
 
 #  MySQL
 MYSQL_ROOT_PASSWORD="core2duo"
-MYSQL_DATABASE="weather"
-MYSQL_USER="weatherUser"
-MYSQL_PASSWORD="waetherPassword"
 
 #   Open Weather
 OPEN_WEATHER_API_KEY=""
@@ -74,9 +68,6 @@ REDIS_COMMANDER_PASSWORD=password
 
 #  MySQL
 MYSQL_ROOT_PASSWORD="core2duo"
-MYSQL_DATABASE="weather"
-MYSQL_USER="weatherUser"
-MYSQL_PASSWORD="waetherPassword"
 
 #   Open Weather
 OPEN_WEATHER_API_KEY=""
@@ -98,9 +89,6 @@ OPEN_WEATHER_API_KEY=""
 ### MySQL
 
 - `MYSQL_ROOT_PASSWORD` is the Root password for mySQL
-- `MYSQL_DATABASE` is the database for the project
-- `MYSQL_USER` is the user for the project database
-- `MYSQL_PASSWORD` is the password for the project database
 
 ### Open Weather
 

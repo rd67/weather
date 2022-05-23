@@ -2,19 +2,20 @@
 process.env.NODE_ENV = "test";
 
 import { describe } from "mocha";
-import chai from "chai";
+import chai, { expect } from "chai";
 import chaiHttp from "chai-http";
 
 import server from "../../index";
 
 import { ICityFileRow } from "@interfaces/cities";
 
-import { STATUS_CODES, MESSAGES } from "@constants/constants";
+import { STATUS_CODES } from "@constants/constants";
 
 import { ICitiesParams } from "@apiV1/cities/interfaces";
 
 chai.use(chaiHttp);
 
+//  First City Taken from City.json file
 const TestCity: ICityFileRow = {
   id: 833,
   name: "Ḩeşār-e Sefīd",
@@ -27,10 +28,15 @@ const TestCity: ICityFileRow = {
 };
 
 describe("V1 Cities", () => {
+  beforeEach((done) => {
+    //Before each test
+    done();
+  });
+
   /*
    * Test the /cities Listing Route route
    */
-  describe("/GET common", () => {
+  describe("GET /v1/cities", () => {
     it("List the available cities around the specified latitude/longitude within a radius of 10 kilometers", (done) => {
       const data: ICitiesParams = {
         lat: TestCity.coord.lat,
@@ -43,10 +49,34 @@ describe("V1 Cities", () => {
         .get("/v1/cities")
         .query(data)
         .end((err, res) => {
-          res.should.have.status(STATUS_CODES.SUCCESS);
-          res.body.should.be.a("array");
+          expect(res.status).to.be.eql(STATUS_CODES.SUCCESS);
 
-          done();
+          expect(res.body).to.be.a("array");
+
+          done(err);
+        });
+    });
+  });
+
+  /*
+   * Test the /cities/:cityId Listing Route route
+   */
+  describe("GET /v1/cities/:cityId", () => {
+    it("Retrieve the details for a city (by cityId)", (done) => {
+      chai
+        .request(server)
+        .get(`/v1/cities/${TestCity.id}`)
+        .end((err, res) => {
+          expect(res.status).to.be.eql(STATUS_CODES.SUCCESS);
+
+          expect(res.body).to.be.a("object");
+
+          expect(res.body).to.have.property("id").be.eql(TestCity.id);
+          expect(res.body).to.have.property("name").to.be.eq(TestCity.name);
+          expect(res.body).to.have.property("lat").to.be.eq(TestCity.coord.lat);
+          expect(res.body).to.have.property("lng").to.be.eq(TestCity.coord.lon);
+
+          done(err);
         });
     });
   });

@@ -21,9 +21,6 @@ export const validateConfigEnv = () => {
 
       //  MySQL
       MYSQL_ROOT_PASSWORD: Joi.string().required(),
-      // MYSQL_DATABASE: Joi.string().required(),
-      // MYSQL_USER: Joi.string().required(),
-      // MYSQL_PASSWORD: Joi.string().required(),
 
       //  Redis
       REDIS_URL: Joi.string().required(),
@@ -49,15 +46,6 @@ const Env = process.env.NODE_ENV as interfaces.IEnvironment;
 const SecretKey = process.env.SECRET_KEY as string;
 const ServerName = process.env.SERVER_NAME as string;
 const ServerURL = process.env.SERVER_URL as string;
-
-// //  MySQL
-// const MySQLConfig: interfaces.IMySQLConfig = {
-//   host: process.env.MYSQL_HOST as string,
-//   port: 3306,
-//   database: 'weather',// process.env.MYSQL_DATABASE as string,
-//   user: 'root',// process.env.MYSQL_USER as string,
-//   password:  process.env.MYSQL_ROOT_PASSWORD as string//process.env.MYSQL_PASSWORD as string,
-// };
 
 //  Redis
 const RedisConfig: interfaces.IRedisConfig = {

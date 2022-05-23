@@ -1,8 +1,6 @@
-import { Model, DataTypes, Optional } from "sequelize";
+import { Sequelize, Model, DataTypes, Optional } from "sequelize";
 
 import { IPointType } from "@interfaces/common";
-
-import db from "@packages/sequelize";
 
 import { ICitiesAttributes } from "@interfaces/cities";
 
@@ -29,58 +27,62 @@ export class CityInstance
   public updatedAt!: Date;
 }
 
-const City = db.sequelize.define<CityInstance>(
-  "cities",
-  {
-    id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-
-    name: {
-      type: new DataTypes.STRING(100),
-      allowNull: false,
-    },
-
-    state: {
-      type: new DataTypes.STRING(50),
-      allowNull: false,
-      defaultValue: "",
-    },
-
-    country: {
-      type: new DataTypes.STRING(3),
-      allowNull: false,
-      defaultValue: "",
-    },
-
-    point: {
-      type: DataTypes.GEOMETRY("POINT", 4326),
-      allowNull: false,
-    },
-
-    createdAt: {
-      type: db.Sequelize.DATE,
-      allowNull: false,
-      defaultValue: db.Sequelize.fn("NOW"),
-    },
-    updatedAt: {
-      type: db.Sequelize.DATE,
-      allowNull: false,
-      defaultValue: db.Sequelize.fn("NOW"),
-    },
-  },
-  {
-    timestamps: true,
-    tableName: "cities",
-    indexes: [
-      {
-        type: "SPATIAL",
-        fields: ["point"],
+const getCityModel = (sequelize: Sequelize) => {
+  const City = sequelize.define<CityInstance>(
+    "cities",
+    {
+      id: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        autoIncrement: true,
+        primaryKey: true,
       },
-    ],
-  }
-);
 
-export default City;
+      name: {
+        type: new DataTypes.STRING(100),
+        allowNull: false,
+      },
+
+      state: {
+        type: new DataTypes.STRING(50),
+        allowNull: false,
+        defaultValue: "",
+      },
+
+      country: {
+        type: new DataTypes.STRING(3),
+        allowNull: false,
+        defaultValue: "",
+      },
+
+      point: {
+        type: DataTypes.GEOMETRY("POINT", 4326),
+        allowNull: false,
+      },
+
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: sequelize.Sequelize.fn("NOW"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: sequelize.Sequelize.fn("NOW"),
+      },
+    },
+    {
+      timestamps: true,
+      tableName: "cities",
+      indexes: [
+        {
+          type: "SPATIAL",
+          fields: ["point"],
+        },
+      ],
+    }
+  );
+
+  return City;
+};
+
+export default getCityModel;
