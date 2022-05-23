@@ -26,9 +26,10 @@ REDIS_COMMANDER_PASSWORD=password
 
 #  MySQL
 MYSQL_ROOT_PASSWORD="core2duo"
+MYSQL_HOST="mySQL"
 
 #   Open Weather
-OPEN_WEATHER_API_KEY=""
+OPEN_WEATHER_API_KEY="3467b87f264f28621d5d131247dc3761"
 ```
 
 - **Production :**
@@ -47,9 +48,10 @@ REDIS_COMMANDER_PASSWORD=password
 
 #  MySQL
 MYSQL_ROOT_PASSWORD="core2duo"
+MYSQL_HOST="mySQL"
 
 #   Open Weather
-OPEN_WEATHER_API_KEY=""
+OPEN_WEATHER_API_KEY="3467b87f264f28621d5d131247dc3761"
 ```
 
 - **Test :**
@@ -68,9 +70,10 @@ REDIS_COMMANDER_PASSWORD=password
 
 #  MySQL
 MYSQL_ROOT_PASSWORD="core2duo"
+MYSQL_HOST="mySQL"
 
 #   Open Weather
-OPEN_WEATHER_API_KEY=""
+OPEN_WEATHER_API_KEY="3467b87f264f28621d5d131247dc3761"
 ```
 
 - **Description of .env file parameters :**
